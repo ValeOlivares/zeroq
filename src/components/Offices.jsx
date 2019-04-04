@@ -43,9 +43,7 @@ class Offices extends Component {
           elapsed += office.lines[line].elapsed
         });
 
-        let date = new Date(null);
-        date.setSeconds(elapsed); 
-        let time = date.toISOString().substr(11, 8);
+        let time = new Date(elapsed * 1000).toISOString().substr(11, 8);
 
         return (
           <Col xs={12} sm={12} md={6} lg={3} xl={3}>
