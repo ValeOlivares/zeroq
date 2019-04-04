@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { faClock} from '@fortawesome/free-regular-svg-icons';
+import { faClock } from '@fortawesome/free-regular-svg-icons';
 
 class Offices extends Component {
 
@@ -10,7 +10,6 @@ class Offices extends Component {
     super(props);
     this.state = {
       offices: [],
-      officeStatus: "online",
       isLoaded: false
     }
   }
@@ -21,46 +20,57 @@ class Offices extends Component {
         return response.json()
       })
       .then((res) => {
-        this.setState({  
+        this.setState({
           offices: res,
-          isLoaded:true,
+          isLoaded: true,
         });
       })
   }
 
- 
+
   render() {
-    let { isLoaded, offices} = this.state;
+    let { isLoaded } = this.state;
     if (!isLoaded) {
       return <div> Loading...</div>
     }
     else {
+      let offices = this.state.offices.map(office => {
+
+        let waiting = 0;
+        let elapsed = 0;
+        Object.keys(office.lines).filter(line => {
+          waiting += office.lines[line].waiting
+          elapsed += office.lines[line].elapsed
+        });
+        return (
+          <Col xs={12} sm={12} md={6} lg={3} xl={3}>
+            <div className={'office-container ' + (office.online ? 'online' : 'offline')}>
+              <p key={office.id}>{office.name}</p>
+            </div>
+            <Row >
+              <Col xs lg="4">
+                <div className={'office-footer user ' + (office.online ? 'footer-online' : 'footer-offline')}>
+                  <p>
+                    <span><FontAwesomeIcon icon={faUser} /></span> { waiting }
+                  </p>
+                </div>
+              </Col>
+              <Col>
+                <div className={'office-footer clock ' + (office.online ? 'footer-online' : 'footer-offline')}>
+                  <p>
+                    <span><FontAwesomeIcon icon={faClock} /></span> { elapsed }
+                </p>
+                </div>
+              </Col>
+            </Row>
+          </Col>
+
+        )
+      });
       return (
         <Container>
           <Row>
-            {offices.map(office =>(
-            <Col xs={6} sm={6} md={3} lg={3} xl={3}>
-              <div className={'office-container ' + (office.online ? 'online' : 'offline')}>   
-                <p key={office.id}>{office.name}</p>
-              </div> 
-              <Row >
-                <Col xs lg="4">
-                  <div  className={'office-footer user ' +(office.online ? 'footer-online' : 'footer-offline')}>
-                    <p>
-                      <span><FontAwesomeIcon icon={faUser} /></span> 5
-                    </p>
-                  </div>
-                </Col>
-                <Col>
-                  <div  className={'office-footer clock ' +(office.online ? 'footer-online' : 'footer-offline')}>
-                    <p>
-                      <span><FontAwesomeIcon icon={faClock} /></span> 2:10
-                    </p>
-                  </div>
-                </Col>
-              </Row>
-            </Col>
-            ))}
+            {offices}
           </Row>
         </Container>
       )

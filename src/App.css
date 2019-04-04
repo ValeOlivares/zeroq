@@ -7,8 +7,10 @@ body{
   text-align: center;
 }
 
+/* SearchBar Styles */
 .searchbar{
-  margin: 1.4vh;
+  margin-top: 1.4vh;
+  margin-bottom: 1.4vh;
 }
 
 .searchbar-container {
@@ -16,19 +18,42 @@ body{
   background-color: #2D4F83;
 }
 
+/* Offices Styles */
+
 .office-container {
   margin-top: 3vh;
-  background: #2D4F83;
-  color: #fff;
-  max-width: 20vw;
-  min-height: 15vh;
+  min-height: 5em;
   padding: 1vh;
 }
 
-.office-footer {
-  background: #00B886;
+.online{
+  background: #2D4F83;
   color: #fff;
-  max-width: 20vw;
-  padding: 1vh;
 }
+
+.offline{
+  background: #E2E2E2;
+  color: #8B8B8B;
+}
+
+.footer-online{
+  background: #00B886;
+}
+
+.footer-offline{
+  background: #8B8B8B;
+}
+
+.office-footer {
+  color: #fff;
+  min-height: 1em;
+}
+
+.user {
+  padding-left: 2em;
+  width: 150%;
+}
+
+
+
 
