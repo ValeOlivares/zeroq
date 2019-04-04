@@ -1,6 +1,5 @@
-.App {
+body{
   background-color: #1C2F57;
-  min-height: 100vh;
 }
 
 .image-container {
@@ -16,3 +15,20 @@
   margin-top: 3vh;
   background-color: #2D4F83;
 }
+
+.office-container {
+  margin-top: 3vh;
+  background: #2D4F83;
+  color: #fff;
+  max-width: 20vw;
+  min-height: 15vh;
+  padding: 1vh;
+}
+
+.office-footer {
+  background: #00B886;
+  color: #fff;
+  max-width: 20vw;
+  padding: 1vh;
+}
+

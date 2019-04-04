@@ -1,4 +1,3 @@
-    
 import React, { Component } from 'react';
 import { Row, Col, Form} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
