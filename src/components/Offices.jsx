@@ -42,6 +42,11 @@ class Offices extends Component {
           waiting += office.lines[line].waiting
           elapsed += office.lines[line].elapsed
         });
+
+        let date = new Date(null);
+        date.setSeconds(elapsed); 
+        let time = date.toISOString().substr(11, 8);
+
         return (
           <Col xs={12} sm={12} md={6} lg={3} xl={3}>
             <div className={'office-container ' + (office.online ? 'online' : 'offline')}>
@@ -58,7 +63,7 @@ class Offices extends Component {
               <Col>
                 <div className={'office-footer clock ' + (office.online ? 'footer-online' : 'footer-offline')}>
                   <p>
-                    <span><FontAwesomeIcon icon={faClock} /></span> { elapsed }
+                    <span><FontAwesomeIcon icon={faClock} /></span> { time }
                 </p>
                 </div>
               </Col>
