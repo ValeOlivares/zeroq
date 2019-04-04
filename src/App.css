@@ -1,6 +1,18 @@
 .App {
-  text-align: center;
   background-color: #1C2F57;
   min-height: 100vh;
 }
 
+.image-container {
+  margin-top: 3vh;
+  text-align: center;
+}
+
+.searchbar{
+  margin: 1.4vh;
+}
+
+.searchbar-container {
+  margin-top: 3vh;
+  background-color: #2D4F83;
+}
