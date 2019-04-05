@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
+import SearchBar from './SearchBar';
 
 class Offices extends Component {
 
@@ -10,7 +11,8 @@ class Offices extends Component {
     super(props);
     this.state = {
       offices: [],
-      isLoaded: false
+      isLoaded: false,
+      search: ''
     }
   }
 
@@ -34,7 +36,9 @@ class Offices extends Component {
       return <div> Loading...</div>
     }
     else {
-      let offices = this.state.offices.map(office => {
+      let offices = this.state.offices.filter(office =>
+        office.name.toLowerCase().includes(this.state.search.toLowerCase())
+      ).map(office => {
 
         let waiting = 0;
         let elapsed = 0;
@@ -71,11 +75,14 @@ class Offices extends Component {
         )
       });
       return (
-        <Container>
-          <Row>
-            {offices}
-          </Row>
-        </Container>
+        <div>
+          <SearchBar onTextChange={text => this.setState({search: text})}/>
+          <Container>
+            <Row>
+              {offices}
+            </Row>
+          </Container>
+        </div>
       )
     }
   }

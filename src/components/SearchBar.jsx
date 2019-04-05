@@ -11,7 +11,7 @@ class SearchBar extends Component {
           <Container>
             <Row>
               <Col xs={11} sm={11} md={10} lg={4} xl={4}>
-                <Form.Control type="text" placeholder="Buscar sucursal" className= "searchbar"/>
+                <Form.Control type="text" placeholder="Buscar sucursal" className= "searchbar" onKeyDown={event => this.props.onTextChange(event.target.value)}/>
               </Col>
             </Row>
           </Container>

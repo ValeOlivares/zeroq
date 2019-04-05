@@ -16,7 +16,6 @@ class App extends Component {
             <img src={logo}/>
           </Col>
         </Row>
-        <SearchBar/>
         <Offices/>
       </div>
     );
